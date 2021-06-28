@@ -13,6 +13,14 @@ Plug 'junegunn/fzf.vim'
 Plug 'ycm-core/YouCompleteMe'
 " to comment out lines
 Plug 'tpope/vim-commentary'
+" to have multiple cursors
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" smoother scrolling
+Plug 'yuttie/comfortable-motion.vim'
+" customize start menu
+Plug 'mhinz/vim-startify'
+" do git commands from vim
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 syntax on
@@ -40,3 +48,13 @@ set undofile
 set scrolloff=8
 nnoremap <Space>n :NERDTreeToggle<CR>
 nnoremap <F2> :Files<CR>
+
+" Make adjusing split sizes a bit more friendly
+noremap <silent> <C-Left> :vertical resize +3<CR>
+noremap <silent> <C-Right> :vertical resize -3<CR>
+noremap <silent> <C-Up> :resize -3<CR>
+noremap <silent> <C-Down> :resize +3<CR>
+
+" Change 2 split windows from vert to horiz or horiz to vert
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
