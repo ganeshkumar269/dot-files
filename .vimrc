@@ -1,3 +1,10 @@
+" Setting colors for vim buffet
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=5 ctermfg=1 guibg=#00FF00 guifg=#000000
+  hi! BuffetBuffer cterm=NONE ctermbg=5 ctermfg=0 guibg=#00FF00 guifg=#000000
+endfunction
+set encoding=UTF-8
+
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/NERDTree'
 Plug 'joshdick/onedark.vim'
@@ -31,8 +38,10 @@ Plug 'szw/vim-maximizer'
 " git diff info can be seen on editor
 Plug 'airblade/vim-gitgutter'
 " for easier movement
-Plug 'easymotion/vim-easymotion'
-
+" handling buffers
+Plug 'bagrat/vim-buffet'
+" icon pack
+Plug 'ryanoasis/vim-devicons' " not working :( see the installation guide from github
 call plug#end()
 
 syntax on
@@ -43,6 +52,9 @@ let &t_SI.="\e[5 q"
 let &t_EI.="\e[1 q"
 let &t_te.="\e[0 q"
 
+" dont display trailing mixed indent
+" https://stackoverflow.com/questions/59850403/the-meaning-of-the-status-bar-trailing-mixed-indent-mix-indent-file-in-vim
+let g:airline#extensions#whitespace#enabled = 0
 " copy (write) highlighted text to .vimbuffer
 vmap <C-c> y:new ~/.vimbuffer<CR>VGp:x<CR> \| :!cat ~/.vimbuffer \| clip.exe <CR><CR>
 " paste from buffer
@@ -125,4 +137,18 @@ nmap <leader>dcbp <Plug>VimspectorToggleConditionalBreakpoint
 nnoremap <leader>tt :below vertical terminal<CR>
 
 " easy-motion maps
+
+" buffer maps
+nmap <leader>b :ls<CR>
+" vim-buffet mappings
+nmap <leader>1 <Plug>BuffetSwitch(1)
+nmap <leader>2 <Plug>BuffetSwitch(2)
+nmap <leader>3 <Plug>BuffetSwitch(3)
+nmap <leader>4 <Plug>BuffetSwitch(4)
+nmap <leader>5 <Plug>BuffetSwitch(5)
+nmap <leader>6 <Plug>BuffetSwitch(6)
+nmap <leader>7 <Plug>BuffetSwitch(7)
+nmap <leader>8 <Plug>BuffetSwitch(8)
+nmap <leader>9 <Plug>BuffetSwitch(9)
+nmap <leader>0 <Plug>BuffetSwitch(10)
 
